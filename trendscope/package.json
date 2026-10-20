@@ -10,12 +10,13 @@
     "format": "biome format --write",
     "check": "biome check",
     "check:fix": "biome check --write",
-    "prepare": "cd .. && husky .husky",
+    "prepare": "node src/scripts/prepare.mjs",
     "generate:presets": "ts-node -P tsconfig.scripts.json src/scripts/generate-theme-presets.ts",
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test tests/*.test.ts",
     "db:migrate": "node --import tsx src/scripts/migrate.ts",
-    "test:smoke": "node src/scripts/smoke.mjs"
+    "test:smoke": "node src/scripts/smoke.mjs",
+    "build:render": "node src/scripts/render-build.mjs"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": ["biome check --write --no-errors-on-unmatched"]
@@ -86,5 +87,6 @@
   },
   "engines": {
     "node": ">=22.0.0 <25"
-  }
+  },
+  "packageManager": "npm@10.9.9"
 }

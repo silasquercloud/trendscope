@@ -8,6 +8,10 @@ permissions:
 jobs:
   production:
     runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
+      RENDER: "true"
+      HUSKY: "0"
     defaults:
       run:
         working-directory: trendscope
@@ -15,14 +19,16 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .node-version
           cache: npm
           cache-dependency-path: trendscope/package-lock.json
-      - run: npm ci
+      - name: Render clean installation and production build
+        run: npm run build:render
+      - name: Lockfile remains unchanged
+        run: git diff --exit-code -- package-lock.json
       - run: npm run lint
       - run: npm run check
       - run: npm test
-      - run: npm run build
       - run: npm run typecheck
       - name: Production HTTP smoke test
         run: |

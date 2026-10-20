@@ -1,0 +1,114 @@
+(node:6) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> trendscope@2.2.0 build:render
+> node src/scripts/render-build.mjs
+
+(node:19) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+TrendScope Render build: Node v22.23.3; npm 10.9.9
+Project directory: /tmp/trendscope-render-source
+Lockfile: package-lock.json (version 3)
+npm omit: (empty)
+npm include: dev
+npm ignore-scripts: false
+npm workspaces: null
+Installing from the committed lockfile (including build tools)...
+(node:99) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> trendscope@2.2.0 prepare
+> node src/scripts/prepare.mjs
+
+(node:126) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Skipping Git hooks in CI/production.
+
+added 627 packages in 12s
+Building production application...
+(node:134) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> trendscope@2.2.0 build
+> next build
+
+(node:147) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+▲ Next.js 16.4.2 (Turbopack)
+✓ Running next.config.mjs took 16ms
+- Experiments (use with caution):
+  ⨯ turbopackFileSystemCacheForBuild
+
+  Creating an optimized production build ...
+(node:169) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:182) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:202) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:214) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:222) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:230) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:250) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:282) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:302) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:303) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✓ Compiled successfully in 7.2s
+  Running TypeScript ...
+  Finished TypeScript in 2.3s ...
+  Collecting page data using 8 workers ...
+(node:370) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:376) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:383) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:392) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:400) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:408) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:416) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:424) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  Generating static pages using 8 workers (0/17) ...
+  Generating static pages using 8 workers (4/17)
+  Generating static pages using 8 workers (8/17)
+  Generating static pages using 8 workers (12/17)
+✓ Generating static pages using 8 workers (17/17) in 521ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/accounts/[id]
+├ ƒ /api/accounts/[id]/sync
+├ ƒ /api/auth/[...all]
+├ ƒ /api/health
+├ ƒ /api/workspace
+├ ƒ /dashboard
+├ ƒ /dashboard/[...not-found]
+├ ƒ /dashboard/analises
+├ ƒ /dashboard/audios
+├ ƒ /dashboard/configuracoes
+├ ƒ /dashboard/contas
+├ ƒ /dashboard/default
+├ ƒ /dashboard/laboratorio
+├ ƒ /dashboard/monetizacao
+├ ƒ /dashboard/relatorios
+├ ƒ /dashboard/tendencias
+├ ƒ /dashboard/videos
+└ ○ /robots.txt
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand

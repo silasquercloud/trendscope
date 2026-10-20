@@ -1,5 +1,7 @@
 # Auditoria e validação — 20/10/2026
 
+Atualização da correção de deploy: [incidente Render](RENDER-INCIDENT.md), com instalação de produção, Node 22.23.3/npm 10.9.9, 11 testes e logs próprios. As evidências abaixo registram a entrega inicial.
+
 ## Resultado e limites
 
 A aplicação compila e o servidor de produção responde às dez páginas do TrendScope. Isso não certifica uma plataforma integralmente pronta para produção: QA visual no navegador, PostgreSQL real, OAuth real, receitas, fontes de tendências/áudios, IA externa e deploy ainda estão pendentes.
