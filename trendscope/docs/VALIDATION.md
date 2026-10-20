@@ -4,7 +4,7 @@
 
 A aplicação compila e o servidor de produção responde às dez páginas do TrendScope. Isso não certifica uma plataforma integralmente pronta para produção: QA visual no navegador, PostgreSQL real, OAuth real, receitas, fontes de tendências/áudios, IA externa e deploy ainda estão pendentes.
 
-Ambiente testado: Linux x86_64, Node **24.19.0**, npm **11.9.0**, Next **16.4.2**, React **19.3.1**, Lucide **1.59.0**. Node 22 é a versão indicada para hospedagem e para o workflow de CI; esse workflow precisa executar no GitHub para confirmar o ambiente Node 22.
+Ambiente testado: Linux x86_64, Node **24.19.0**, npm **11.9.0**, Next **16.4.2**, React **19.3.1**, Lucide **1.59.0**. A CI remota também validou **Node 22**: instalação, lint/check, 10 testes, build, TypeScript e smoke HTTP passaram no [run 39396765931](https://github.com/silasquercloud/trendscope/actions/runs/39396765931), commit `60c1807c3441fd37bab067fa6e9315d483cab25f`.
 
 ## Falhas reproduzidas e alterações
 
@@ -38,6 +38,7 @@ Ambiente testado: Linux x86_64, Node **24.19.0**, npm **11.9.0**, Next **16.4.2*
 | `npm run test:smoke` | Dez rotas 200, 17 assets JS/CSS 200, redirects 307, rotas antigas 404, workspace vazio, health, proteção de origem e auth não configurada |
 | HTTP com configuração fictícia de auth (sem sessão) | Quatro variantes de endpoints de tokens retornaram 404; sincronização e remoção sem sessão retornaram 401; workspace sem dados privados/segredos |
 | `npm audit --omit=dev --json` | **0 vulnerabilidades** nas dependências de produção no momento da execução |
+| CI GitHub Actions / Node 22 | **Passou** — instalação, lint/check, testes, build, TypeScript e smoke HTTP |
 | `git diff --check` | Passou |
 | Integridade dos componentes protegidos | Nenhuma alteração em `src/components/ui/` e `src/components/calendar/` |
 
@@ -78,7 +79,7 @@ Redirects, legacy 404s, empty workspace, health, CSRF and unconfigured auth veri
 - **PostgreSQL:** migração e queries reais ainda não foram executadas contra um servidor PostgreSQL acessível. O esquema foi inspecionado em relação ao migrador instalado, mas requer validação real antes de habilitar contas.
 - **Google/TikTok:** não foram fornecidos credenciais, apps aprovados ou contas de teste. Login, vínculo, renovação, revogação e sincronização real ainda precisam de homologação.
 - **Hospedagem:** sem sessão/credenciais Render ou Vercel disponível; nenhum site foi publicado. Não há URL de produção validada.
-- **CI:** workflow versionado; só será considerado executado após resultado observado no GitHub. O resultado local não é apresentado como CI remota aprovada.
+A CI remota foi observada como `completed / success` no run vinculado acima. Ela valida a base sem credenciais; não executa PostgreSQL ou OAuth reais.
 
 ## Próximos critérios para produção completa
 
