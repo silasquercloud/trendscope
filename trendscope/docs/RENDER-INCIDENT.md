@@ -43,6 +43,6 @@ Validação local executada com Node 22.23.3/npm 10.9.9:
 | Lockfile | SHA-256 inalterado: `5c591d0b484b3f29bb1049b57049ee2164893ae66024565cba24611f352bfd47` |
 | Interface e dependências | Nenhum arquivo de UI, rota funcional ou dependência foi removido/alterado |
 
-Logs em `docs/validation/render/`. O build isolado usa NODE_ENV=production, RENDER=true, CI=true e HUSKY=0; também foi testada omissão de dev por ambiente. Esta é simulação local do ambiente de build, não execução dentro do Render. CI remota desta correção aguarda observação após publicação do commit.
+Logs em `docs/validation/render/`. O build isolado usa NODE_ENV=production, RENDER=true, CI=true e HUSKY=0; também foi testada omissão de dev por ambiente. Esta é simulação local do ambiente de build, não execução dentro do Render. CI remota desta correção **concluída com sucesso** em Node 22.23.3/npm 10.9.9: [run 39402624848](https://github.com/silasquercloud/trendscope/actions/runs/39402624848), commit `be5f5c6c9bf15364c7dbd43758b995e611b25696`. Instalação/build pelo comando build:render, lockfile intacto, lint/check, 11 testes, TypeScript e smoke HTTP passaram.
 
 Até haver acesso às operações do Render ou um novo deploy manual, **publicação e causa exata do deploy original permanecem sem confirmação**. `DEPLOY.md` contém os valores a salvar no serviço e a sequência de novo deploy, sem merge na main.
