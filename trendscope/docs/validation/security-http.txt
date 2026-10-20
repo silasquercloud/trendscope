@@ -1,0 +1,7 @@
+404 token endpoint blocked: get-access-token
+404 token endpoint blocked: refresh-token
+404 token endpoint blocked: account-info
+404 token endpoint blocked: get-access-token%2f
+401 anonymous mutation blocked: /api/accounts/foreign/sync
+401 anonymous mutation blocked: /api/accounts/foreign
+No private data or server secrets in anonymous workspace response

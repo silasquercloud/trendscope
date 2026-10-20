@@ -1,0 +1,47 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> trendscope@2.2.0 build
+> next build
+
+▲ Next.js 16.4.2 (Turbopack)
+✓ Running next.config.mjs took 12ms
+- Experiments (use with caution):
+  ⨯ turbopackFileSystemCacheForBuild
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 7.2s
+  Running TypeScript ...
+  Finished TypeScript in 2.5s ...
+  Collecting page data using 8 workers ...
+  Generating static pages using 8 workers (0/17) ...
+  Generating static pages using 8 workers (4/17)
+  Generating static pages using 8 workers (8/17)
+  Generating static pages using 8 workers (12/17)
+✓ Generating static pages using 8 workers (17/17) in 398ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/accounts/[id]
+├ ƒ /api/accounts/[id]/sync
+├ ƒ /api/auth/[...all]
+├ ƒ /api/health
+├ ƒ /api/workspace
+├ ƒ /dashboard
+├ ƒ /dashboard/[...not-found]
+├ ƒ /dashboard/analises
+├ ƒ /dashboard/audios
+├ ƒ /dashboard/configuracoes
+├ ƒ /dashboard/contas
+├ ƒ /dashboard/default
+├ ƒ /dashboard/laboratorio
+├ ƒ /dashboard/monetizacao
+├ ƒ /dashboard/relatorios
+├ ƒ /dashboard/tendencias
+├ ƒ /dashboard/videos
+└ ○ /robots.txt
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand

@@ -1,0 +1,36 @@
+name: Validate TrendScope
+on:
+  pull_request:
+  push:
+    branches: [main, fix/production-readiness]
+permissions:
+  contents: read
+jobs:
+  production:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: trendscope
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: trendscope/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run check
+      - run: npm test
+      - run: npm run build
+      - run: npm run typecheck
+      - name: Production HTTP smoke test
+        run: |
+          npm run start > /tmp/trendscope-start.log 2>&1 &
+          server=$!
+          trap 'kill "$server" || true; cat /tmp/trendscope-start.log' EXIT
+          for attempt in $(seq 1 30); do
+            if curl --fail http://localhost:3000/api/health; then break; fi
+            sleep 1
+          done
+          npm run test:smoke
