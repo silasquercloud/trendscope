@@ -7,8 +7,7 @@ export const APP_CONFIG = {
   version: packageJson.version,
   copyright: `© ${currentYear}, TrendScope.`,
   meta: {
-    title: "TrendScope: Open Source Admin Dashboard with shadcn/ui",
-    description:
-      "Painel de análise para criadores no YouTube e TikTok.",
+    title: "TrendScope — Creator Studio",
+    description: "Painel de análise para criadores no YouTube e TikTok.",
   },
 };

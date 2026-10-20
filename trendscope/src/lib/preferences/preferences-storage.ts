@@ -11,7 +11,7 @@ import {
   type PreferenceValueMap,
 } from "./preferences-config";
 
-async function persistByMode(mode: PreferencePersistence, key: string, value: string): Promise<void> {
+async function persistByMode(mode: PreferencePersistence, key: PreferenceKey, value: string): Promise<void> {
   switch (mode) {
     case "none":
       return;
