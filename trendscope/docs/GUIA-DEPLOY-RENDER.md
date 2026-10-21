@@ -120,7 +120,7 @@ Em **Events/Deploys**, aguarde o deploy ficar **Live**. Um build concluído aind
 
 1. Nos logs, confira a versão Node 22, o diretório `/opt/render/project/src/trendscope`, instalação pelo lockfile e build concluído.
 2. Com migrações habilitadas, confira `Migrações aplicadas.` antes de `Ready`.
-3. Abra `/api/health`: deve responder HTTP 200.
+3. Abra `/api/health`: deve responder HTTP 200. Para diagnosticar a configuração, `/api/readiness` informa variáveis obrigatórias ausentes (apenas nomes), se o banco responde e se as tabelas necessárias existem. Nenhum valor secreto é exposto. `readyForSignIn` só fica verdadeiro quando há configuração, esquema e pelo menos um provedor habilitado.
 4. Abra `/api/workspace`: deve mostrar `configured.auth: true` e os provedores configurados, sem segredos. Isso confirma presença de configuração, não valida OAuth nem o banco por si só.
 5. Abra `/dashboard/contas`, faça OAuth e sincronize uma conta real.
 6. Confira vídeos, filtros e CSV. Métricas devem corresponder à API; dados ausentes permanecem indisponíveis.

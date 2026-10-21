@@ -41,6 +41,10 @@ for (const path of ["/dashboard/crm", "/dashboard/finance", "/auth/v1/login", "/
 assert.equal((await fetch(`${base}/`, { redirect: "manual" })).status, 307);
 assert.equal((await fetch(`${base}/dashboard/default`, { redirect: "manual" })).status, 307);
 assert.equal((await fetch(`${base}/api/health`)).status, 200);
+const setup = await (await fetch(`${base}/api/readiness`)).json();
+assert.equal(setup.database.configured, false);
+assert.equal(setup.readyForSignIn, false);
+assert.ok(setup.missingEnvironment.includes("DATABASE_URL"));
 const workspace = await (await fetch(`${base}/api/workspace`)).json();
 assert.deepEqual(workspace.accounts, []);
 assert.deepEqual(workspace.videos, []);
