@@ -3,7 +3,7 @@ services:
     name: trendscope-1
     runtime: node
     branch: fix/production-readiness
-    plan: starter
+    plan: free
     rootDir: trendscope
     buildCommand: npm run build:render
     startCommand: npm run start
@@ -22,3 +22,5 @@ services:
         generateValue: true
       - key: DATABASE_URL
         sync: false
+      - key: RUN_DB_MIGRATIONS
+        value: "1"

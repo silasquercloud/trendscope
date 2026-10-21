@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start --hostname 0.0.0.0",
+    "start": "node src/scripts/start.mjs",
     "lint": "biome lint",
     "format": "biome format --write",
     "check": "biome check",

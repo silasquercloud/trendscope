@@ -12,7 +12,7 @@ Configure um PostgreSQL e adicione as variáveis **no Environment do Render**, n
 - `BETTER_AUTH_URL`: `https://trendscope-1-35k8.onrender.com`.
 - `BETTER_AUTH_SECRET`: segredo aleatório de pelo menos 32 caracteres; mantenha o mesmo entre deploys.
 
-Execute `npm run db:migrate` na pasta `trendscope` com essas variáveis. Isso cria as tabelas Better Auth, sincronizações, histórico e limite de IA. Faça backup antes de migrar um banco existente. No plano gratuito sem Shell, execute pelo terminal local contra a conexão externa segura do banco. Não cole segredos em chat.
+Com essas variáveis configuradas, defina `RUN_DB_MIGRATIONS=1` no serviço e publique. `npm run start` executa as migrações antes do Next.js, usando a conexão privada e sem exigir Shell pago. Alternativamente, `npm run db:migrate` pode ser executado na pasta `trendscope` por um operador com acesso permitido ao banco. Isso cria as tabelas Better Auth, sincronizações, histórico e limite de IA. Faça backup antes de migrar um banco existente. Veja o passo a passo da instalação atual em [GUIA-DEPLOY-RENDER.md](GUIA-DEPLOY-RENDER.md). Não cole segredos em chat.
 
 ## YouTube
 

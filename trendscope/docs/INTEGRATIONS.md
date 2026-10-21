@@ -55,7 +55,7 @@ Endpoints usados: `/v2/user/info/` e `/v2/video/list/` em `open.tiktokapis.com`.
 
 ## IA e tendências
 
-Não há credenciais ou provedor de IA configurado nesta entrega. O laboratório oferece **modelos locais determinísticos**, rotulados como tais. Não é integração de IA. Um provedor real, controle de custo, rate limit e geração no servidor ainda precisam ser implementados e validados.
+Não há credenciais ou provedor de IA configurado nesta entrega. O laboratório usa a OpenAI Responses API pelo servidor, com sessão obrigatória, quota diária e intervalo mínimo entre chamadas. Configure OPENAI_API_KEY e OPENAI_MODEL e execute as migrações. Não há respostas locais de fallback. A chamada real ao provedor depende das credenciais e não foi homologada; veja REAL-DATA.md.
 
 Radar e áudios usam estados vazios e links aos exploradores oficiais; não exibem rankings antigos como atuais. Fontes licenciadas/permitidas e filtros por nicho dependem de implementação posterior. OAuth Display API não concede automaticamente esses dados.
 

@@ -81,3 +81,7 @@ A sincronização é manual, limitada a 200 vídeos por conexão, e pode exceder
 - Cadastre os callbacks exatos e teste login, vínculo, sync, expiração e revogação com contas de teste antes de liberar a terceiros.
 
 Fontes: [Render Blueprint](https://render.com/docs/blueprint-spec), [Render monorepos](https://render.com/docs/monorepo-support), [versão do Node](https://render.com/docs/node-version), [npm ci](https://docs.npmjs.com/cli/v10/commands/npm-ci/), [Vercel monorepos](https://vercel.com/docs/monorepos).
+
+## Ativação desta instalação
+
+Siga o [guia completo do serviço existente](GUIA-DEPLOY-RENDER.md). `RUN_DB_MIGRATIONS=1` aplica as migrações no início, após configurar banco e autenticação. Não altere o segredo de uma instalação existente.
