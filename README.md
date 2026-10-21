@@ -11,9 +11,10 @@ npm run build
 npm run start
 ```
 
-O painel abre sem credenciais, em estado vazio. Demonstração é opt-in; não contém receitas inventadas. Nenhuma integração externa é anunciada como validada sem um teste real com credenciais.
+O painel abre sem credenciais, em estado vazio e tema escuro por padrão. O modo demonstrativo foi removido; não contém métricas ou receitas inventadas. Nenhuma integração externa é anunciada como validada sem um teste real com credenciais.
 
 - [Instalação e deploy](trendscope/docs/DEPLOY.md)
+- [Ativar dados reais e IA](trendscope/docs/REAL-DATA.md)
 - [Integrações e segurança](trendscope/docs/INTEGRATIONS.md)
 - [Arquitetura e funcionalidades](trendscope/docs/ARCHITECTURE.md)
 - [Auditoria e validação](trendscope/docs/VALIDATION.md)

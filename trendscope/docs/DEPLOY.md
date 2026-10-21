@@ -17,7 +17,7 @@ npm run typecheck
 npm run start
 ```
 
-Abra `http://localhost:3000/dashboard`. O comando `start` escuta `0.0.0.0` e respeita `PORT` fornecida pelo host. Sem credenciais, a interface abre vazia e permite ativar a demonstração. Isso não valida integrações reais.
+Abra `http://localhost:3000/dashboard`. O comando `start` escuta `0.0.0.0` e respeita `PORT` fornecida pelo host. Sem credenciais, a interface abre vazia, em tema escuro por padrão, sem dados demonstrativos. Isso não valida integrações reais.
 
 ## Render
 
@@ -54,7 +54,7 @@ O `.npmrc` versionado inclui devDependencies no checkout de origem mesmo sob `NO
 
 É possível usar o comando equivalente `npm ci --include=dev && npm run build`, mas `npm run build:render` agrega os diagnósticos e é exatamente o comando testado na CI. A raiz Git não tem package.json/lockfile; executar npm ci nela gera EUSAGE e ajuda do npm. Não adicione outro lockfile na raiz nem altere a estrutura de workspaces para esconder um Root Directory incorreto.
 
-Para testar somente o dashboard, não é necessário configurar OAuth ou banco. Deixe `DATABASE_URL` e `BETTER_AUTH_SECRET` ausentes/vazios; a demonstração é ativada dentro da interface. A interface funcional não equivale à homologação de integrações.
+Para testar somente o dashboard, não é necessário configurar OAuth ou banco. Deixe `DATABASE_URL` e `BETTER_AUTH_SECRET` ausentes/vazios; os estados vazios não inventam métricas. Para dados reais, siga [REAL-DATA.md](REAL-DATA.md). A interface funcional não equivale à homologação de integrações.
 
 Para habilitar contas reais, configure `DATABASE_URL`, `BETTER_AUTH_URL` (URL HTTPS exata do site), `BETTER_AUTH_SECRET` (mínimo 32 caracteres aleatórios) e as credenciais desejadas de `.env.example`.
 
@@ -77,7 +77,7 @@ A sincronização é manual, limitada a 200 vídeos por conexão, e pode exceder
 - Páginas da sidebar e assets JS/CSS: respostas sem 5xx.
 - `/dashboard/default`: redireciona ao painel atual.
 - `/dashboard/crm`, `/chat`, `/mail`: não expõem apps antigos.
-- Teste claro/escuro, mobile, navegação, demonstração e CSV no navegador real.
+- Teste claro/escuro, mobile, navegação, estados vazios e CSV no navegador real.
 - Cadastre os callbacks exatos e teste login, vínculo, sync, expiração e revogação com contas de teste antes de liberar a terceiros.
 
 Fontes: [Render Blueprint](https://render.com/docs/blueprint-spec), [Render monorepos](https://render.com/docs/monorepo-support), [versão do Node](https://render.com/docs/node-version), [npm ci](https://docs.npmjs.com/cli/v10/commands/npm-ci/), [Vercel monorepos](https://vercel.com/docs/monorepos).

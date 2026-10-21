@@ -1,5 +1,5 @@
-import { demoWorkspace } from "../src/lib/trendscope/demo";
 import { csvCell, engagement, filterVideos, sumKnown, videosCSV } from "../src/lib/trendscope/metrics";
+import { demoWorkspace } from "./fixtures/workspace";
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
@@ -24,11 +24,10 @@ test("unknown metrics are never silently treated as zero", () => {
   assert.equal(engagement([{ ...workspace.videos[0], likes: null }]), null);
   assert.equal(engagement([{ ...workspace.videos[0], views: 100, likes: 8, comments: 2 }]), 10);
 });
-test("CSV quotes values, neutralizes formulas and explicitly labels demo exports", () => {
+test("CSV quotes values, neutralizes formulas and labels official exports", () => {
   for (const value of ["=CMD()", "+SUM(A1)", "-1+2", "@call", "  =SUM(A1)", "\t=1"])
     assert.ok(csvCell(value).startsWith("\"'"));
   assert.equal(csvCell('um;"dois"'), '"um;""dois"""');
-  assert.ok(videosCSV(workspace.videos, true).includes("DEMONSTRAÇÃO"));
-  assert.ok(!videosCSV(workspace.videos, true).includes("Receita"));
-  assert.ok(videosCSV(workspace.videos, false).includes("API oficial"));
+  assert.ok(!videosCSV(workspace.videos).includes("Receita"));
+  assert.ok(videosCSV(workspace.videos).includes("API oficial"));
 });

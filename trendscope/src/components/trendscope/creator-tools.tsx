@@ -14,10 +14,46 @@ import type { Section, Video } from "@/lib/trendscope/types";
 import { EmptyState } from "./empty-state";
 import { exportVideos } from "./video-library";
 
-export function CreatorTools({ section, videos, demo }: { section: Section; videos: Video[]; demo: boolean }) {
+export function CreatorTools({
+  section,
+  videos,
+  aiEnabled,
+  signedIn,
+}: {
+  section: Section;
+  videos: Video[];
+  aiEnabled: boolean;
+  signedIn: boolean;
+}) {
   const [topic, setTopic] = useState("");
   const [format, setFormat] = useState("Tutorial");
   const [draft, setDraft] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  async function generate() {
+    if (busy || !aiEnabled || !signedIn) return;
+    setBusy(true);
+    setError("");
+    setDraft("");
+    try {
+      const response = await fetch("/api/ideas", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ topic, format }),
+        signal: AbortSignal.timeout(55000),
+      });
+      const result = await response.json();
+      if (!response.ok) {
+        setError(result.error ?? "Não foi possível gerar o conteúdo.");
+        return;
+      }
+      setDraft(result.text);
+    } catch {
+      setError("Falha de conexão ou tempo limite. Tente novamente em um minuto.");
+    } finally {
+      setBusy(false);
+    }
+  }
   if (section === "money")
     return (
       <>
@@ -90,10 +126,8 @@ export function CreatorTools({ section, videos, demo }: { section: Section; vide
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col items-start gap-4">
-          <p>
-            {videos.length} vídeos no relatório · {demo ? "Demonstração" : "APIs oficiais"}
-          </p>
-          <Button disabled={!videos.length} variant="outline" onClick={() => exportVideos(videos, demo)}>
+          <p>{videos.length} vídeos no relatório · APIs oficiais</p>
+          <Button disabled={!videos.length} variant="outline" onClick={() => exportVideos(videos)}>
             <Download data-icon="inline-start" />
             Baixar CSV
           </Button>
@@ -106,19 +140,26 @@ export function CreatorTools({ section, videos, demo }: { section: Section; vide
       <CardHeader>
         <CardTitle>Planeje seu próximo vídeo</CardTitle>
         <CardDescription>
-          Modelos locais de ideias, títulos e roteiros. Não utiliza inteligência artificial. Integração com provedor de
-          IA ainda pendente.
+          Ideias, títulos e roteiros gerados pela OpenAI. O assunto e o formato são enviados ao provedor ao gerar.
+          Revise o conteúdo antes de publicar.
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-5">
+        {(!aiEnabled || !signedIn) && (
+          <EmptyState
+            title={!aiEnabled ? "Provedor de IA não configurado" : "Entre para gerar conteúdo"}
+            description={
+              !aiEnabled
+                ? "Configure OPENAI_API_KEY e OPENAI_MODEL no servidor. Não usamos respostas prontas como IA."
+                : "Conecte uma conta em Minhas contas. Até 20 tentativas por dia, com um minuto entre elas."
+            }
+            action={false}
+          />
+        )}
         <form
           onSubmit={(event) => {
             event.preventDefault();
-            const subject = topic.trim();
-            if (!subject) return;
-            setDraft(
-              `Ideia · ${format} sobre ${subject}\n\nTítulos para adaptar:\n• 3 descobertas sobre ${subject}\n• O que aprendi com ${subject}\n• ${subject}: do início ao resultado\n\nRoteiro base:\n0–3s: apresente o resultado e uma pergunta sobre ${subject}.\n3–15s: mostre o problema com um exemplo concreto.\n15–45s: explique três passos e mostre evidências.\n45–60s: resuma e convide o público a compartilhar uma experiência.\n\nFormato sugerido: ${format}. Revise fatos e adapte ao seu público.`,
-            );
+            void generate();
           }}
         >
           <FieldGroup>
@@ -129,24 +170,32 @@ export function CreatorTools({ section, videos, demo }: { section: Section; vide
                 value={topic}
                 onChange={(e) => setTopic(e.target.value)}
                 maxLength={160}
+                minLength={3}
+                disabled={busy || !aiEnabled || !signedIn}
                 required
                 placeholder="Ex.: setup gamer acessível"
               />
             </Field>
             <Field>
               <FieldLabel htmlFor="format">Formato</FieldLabel>
-              <NativeSelect id="format" value={format} onChange={(e) => setFormat(e.target.value)}>
+              <NativeSelect
+                disabled={busy || !aiEnabled || !signedIn}
+                id="format"
+                value={format}
+                onChange={(e) => setFormat(e.target.value)}
+              >
                 {["Tutorial", "Comparação", "Bastidores", "História curta"].map((value) => (
                   <NativeSelectOption key={value}>{value}</NativeSelectOption>
                 ))}
               </NativeSelect>
             </Field>
-            <Button type="submit" disabled={!topic.trim()}>
+            <Button type="submit" disabled={busy || !aiEnabled || !signedIn || topic.trim().length < 3}>
               <Sparkles data-icon="inline-start" />
-              Montar modelo local
+              {busy ? "Gerando conteúdo…" : "Gerar com IA"}
             </Button>
           </FieldGroup>
         </form>
+        {error && <p role="alert">{error}</p>}
         {draft && (
           <pre aria-live="polite" className="whitespace-pre-wrap rounded-lg bg-muted p-4 font-sans text-sm">
             {draft}

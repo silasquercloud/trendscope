@@ -11,6 +11,13 @@ async function migrate() {
   const migrations = await getMigrations(auth.options);
   await migrations.runMigrations();
   await getDB().query(`
+    CREATE TABLE IF NOT EXISTS creator_ai_usage (
+      user_id text NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,
+      day date NOT NULL DEFAULT CURRENT_DATE,
+      requests integer NOT NULL DEFAULT 0,
+      last_request timestamptz NOT NULL DEFAULT NOW(),
+      PRIMARY KEY(user_id, day)
+    );
     CREATE TABLE IF NOT EXISTS creator_snapshot (
       user_id text NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,
       account_id text NOT NULL REFERENCES account(id) ON DELETE CASCADE,

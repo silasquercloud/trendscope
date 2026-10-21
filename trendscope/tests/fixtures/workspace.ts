@@ -1,4 +1,4 @@
-import type { Workspace } from "./types";
+import type { Workspace } from "../../src/lib/trendscope/types";
 
 // Intentionally separate from server data. Revenue is never synthesized.
 export function demoWorkspace(now = Date.now()): Workspace {

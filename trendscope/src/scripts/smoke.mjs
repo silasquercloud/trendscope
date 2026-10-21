@@ -19,6 +19,9 @@ for (const path of routes) {
   const html = await response.text();
   assert.ok(html.includes("TrendScope"), path);
   assert.ok(!html.includes("Open Source Business Dashboard"), path);
+  assert.ok(html.includes('class="dark"'), path);
+  assert.ok(!html.includes("Ver demonstração"), path);
+  assert.ok(!html.includes("Montar modelo local"), path);
   if (!path) {
     assert.ok(html.includes("Indisponível"));
     assert.ok(!html.includes("374.800"));
@@ -41,8 +44,10 @@ assert.equal((await fetch(`${base}/api/health`)).status, 200);
 const workspace = await (await fetch(`${base}/api/workspace`)).json();
 assert.deepEqual(workspace.accounts, []);
 assert.deepEqual(workspace.videos, []);
-for (const path of ["/api/accounts/fake/sync", "/api/accounts/fake"]) {
-  const response = await fetch(base + path, { method: path.endsWith("sync") ? "POST" : "DELETE" });
+for (const path of ["/api/accounts/fake/sync", "/api/accounts/fake", "/api/ideas"]) {
+  const response = await fetch(base + path, {
+    method: path.endsWith("sync") || path.endsWith("ideas") ? "POST" : "DELETE",
+  });
   assert.equal(response.status, 403);
 }
 assert.equal(

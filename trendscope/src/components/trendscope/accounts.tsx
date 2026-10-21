@@ -12,17 +12,10 @@ import { authClient } from "@/lib/auth-client";
 import type { Workspace } from "@/lib/trendscope/types";
 
 import { EmptyState } from "./empty-state";
+import { IntegrationSetup } from "./integration-setup";
 import { formatCount } from "./performance";
 
-export function Accounts({
-  workspace,
-  demo,
-  notify,
-}: {
-  workspace: Workspace;
-  demo: boolean;
-  notify: (message: string) => void;
-}) {
+export function Accounts({ workspace, notify }: { workspace: Workspace; notify: (message: string) => void }) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   async function connect(provider: "google" | "tiktok") {
@@ -58,11 +51,14 @@ export function Accounts({
   }
   return (
     <div className="flex flex-col gap-4">
+      {(!workspace.configured.google || !workspace.configured.tiktok) && (
+        <IntegrationSetup configured={workspace.configured} />
+      )}
       <div className="flex flex-wrap gap-2">
         {(["google", "tiktok"] as const).map((provider) => (
           <Button
             key={provider}
-            disabled={busy || demo || !workspace.configured[provider]}
+            disabled={busy || !workspace.configured[provider]}
             variant="outline"
             onClick={() => {
               void connect(provider);
@@ -95,11 +91,11 @@ export function Accounts({
             </CardHeader>
             <CardContent className="flex flex-col gap-3">
               <Badge variant="secondary">
-                {demo
-                  ? "Conta demonstrativa"
-                  : { connected: "Autorizada", reconnect: "Reconexão necessária", error: "Erro de sincronização" }[
-                      account.status
-                    ]}
+                {
+                  { connected: "Autorizada", reconnect: "Reconexão necessária", error: "Erro de sincronização" }[
+                    account.status
+                  ]
+                }
               </Badge>
               <div className="font-semibold text-2xl tabular-nums">{formatCount(account.followers)}</div>
               <p className="text-muted-foreground text-xs">
@@ -109,38 +105,36 @@ export function Accounts({
                   : "Nunca sincronizada"}
               </p>
             </CardContent>
-            {!demo && (
-              <CardFooter className="flex flex-wrap gap-2">
-                <Button
-                  disabled={busy}
-                  variant="outline"
-                  onClick={() => {
-                    void mutate(account.id, false);
-                  }}
-                >
-                  <RefreshCw data-icon="inline-start" />
-                  Sincronizar
-                </Button>
-                <Button
-                  disabled={busy}
-                  variant="ghost"
-                  onClick={() => {
-                    void connect(account.provider);
-                  }}
-                >
-                  Reconectar
-                </Button>
-                <Button
-                  disabled={busy}
-                  variant="destructive"
-                  onClick={() => {
-                    void mutate(account.id, true);
-                  }}
-                >
-                  Desconectar
-                </Button>
-              </CardFooter>
-            )}
+            <CardFooter className="flex flex-wrap gap-2">
+              <Button
+                disabled={busy}
+                variant="outline"
+                onClick={() => {
+                  void mutate(account.id, false);
+                }}
+              >
+                <RefreshCw data-icon="inline-start" />
+                Sincronizar
+              </Button>
+              <Button
+                disabled={busy}
+                variant="ghost"
+                onClick={() => {
+                  void connect(account.provider);
+                }}
+              >
+                Reconectar
+              </Button>
+              <Button
+                disabled={busy}
+                variant="destructive"
+                onClick={() => {
+                  void mutate(account.id, true);
+                }}
+              >
+                Desconectar
+              </Button>
+            </CardFooter>
           </Card>
         ))}
       </div>

@@ -35,7 +35,7 @@ export function csvCell(value: string | number | null): string {
   const safe = /^[\s]*[=+@\-\t\r]/u.test(text) ? `'${text}` : text;
   return `"${safe.replaceAll('"', '""')}"`;
 }
-export function videosCSV(videos: Video[], demo: boolean): string {
+export function videosCSV(videos: Video[]): string {
   const rows: (string | number | null)[][] = [
     [
       "Origem",
@@ -49,7 +49,7 @@ export function videosCSV(videos: Video[], demo: boolean): string {
       "URL",
     ],
     ...videos.map((v) => [
-      demo ? "DEMONSTRAÇÃO" : "API oficial",
+      "API oficial",
       v.title,
       v.account,
       v.platform,

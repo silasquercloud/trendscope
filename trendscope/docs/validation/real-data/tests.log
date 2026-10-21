@@ -1,0 +1,122 @@
+(node:76) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> trendscope@2.2.0 test
+> node --import tsx --test tests/*.test.ts
+
+(node:89) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+TAP version 13
+# (node:96) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: AI never substitutes a template when credentials are missing
+ok 1 - AI never substitutes a template when credentials are missing
+  ---
+  duration_ms: 2.001915
+  type: 'test'
+  ...
+# Subtest: AI sends only the requested topic and format and extracts actual provider messages
+ok 2 - AI sends only the requested topic and format and extracts actual provider messages
+  ---
+  duration_ms: 10.665157
+  type: 'test'
+  ...
+# Subtest: AI rejects refused, incomplete and empty provider output without inventing content
+ok 3 - AI rejects refused, incomplete and empty provider output without inventing content
+  ---
+  duration_ms: 5.061447
+  type: 'test'
+  ...
+# (node:96) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# (node:97) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: filters apply publication date, platform, account, search together
+ok 4 - filters apply publication date, platform, account, search together
+  ---
+  duration_ms: 3.188584
+  type: 'test'
+  ...
+# Subtest: unknown metrics are never silently treated as zero
+ok 5 - unknown metrics are never silently treated as zero
+  ---
+  duration_ms: 0.298974
+  type: 'test'
+  ...
+# Subtest: CSV quotes values, neutralizes formulas and labels official exports
+ok 6 - CSV quotes values, neutralizes formulas and labels official exports
+  ---
+  duration_ms: 0.400085
+  type: 'test'
+  ...
+# (node:97) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# (node:103) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: source-only production install does not require Husky or Git metadata
+ok 7 - source-only production install does not require Husky or Git metadata
+  ---
+  duration_ms: 125.656138
+  type: 'test'
+  ...
+# (node:103) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# (node:104) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: YouTube parsing preserves unavailable and hidden statistics
+ok 8 - YouTube parsing preserves unavailable and hidden statistics
+  ---
+  duration_ms: 5.401782
+  type: 'test'
+  ...
+# Subtest: TikTok normalization rejects invalid payloads and does not fabricate counts
+ok 9 - TikTok normalization rejects invalid payloads and does not fabricate counts
+  ---
+  duration_ms: 1.743034
+  type: 'test'
+  ...
+# Subtest: YouTube pagination and batching use fixed official hosts and bearer headers
+ok 10 - YouTube pagination and batching use fixed official hosts and bearer headers
+  ---
+  duration_ms: 24.887696
+  type: 'test'
+  ...
+# Subtest: TikTok API application errors and expired tokens are not successful syncs
+ok 11 - TikTok API application errors and expired tokens are not successful syncs
+  ---
+  duration_ms: 2.161074
+  type: 'test'
+  ...
+# Subtest: TikTok only reports account-wide views as unavailable
+ok 12 - TikTok only reports account-wide views as unavailable
+  ---
+  duration_ms: 2.576652
+  type: 'test'
+  ...
+# (node:104) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# (node:110) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: auth fails closed without a database and a sufficiently long secret
+ok 13 - auth fails closed without a database and a sufficiently long secret
+  ---
+  duration_ms: 1.574829
+  type: 'test'
+  ...
+# Subtest: mutations reject missing, foreign and spoofed origins
+ok 14 - mutations reject missing, foreign and spoofed origins
+  ---
+  duration_ms: 2.311939
+  type: 'test'
+  ...
+# (node:110) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3263.600863

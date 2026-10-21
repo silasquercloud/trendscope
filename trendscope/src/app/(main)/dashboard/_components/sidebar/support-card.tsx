@@ -8,7 +8,7 @@ export function SupportCard() {
       <CardHeader>
         <CardTitle>Seu Creator Studio</CardTitle>
         <CardDescription>
-          Conecte suas contas para começar. A demonstração é opcional e usa dados fictícios.
+          Conecte suas contas para acompanhar métricas oficiais e sincronizar seus vídeos.
         </CardDescription>
         <Link className="text-sm underline underline-offset-4" href="/dashboard/contas">
           Gerenciar conexões

@@ -1,8 +1,9 @@
 import type { Section } from "@/lib/trendscope/types";
+import { aiConfigured } from "@/server/integrations/ai";
 import { loadWorkspace } from "@/server/workspace";
 
 import { TrendScreen } from "./trend-screen";
 
 export async function TrendPage({ section }: { section: Section }) {
-  return <TrendScreen section={section} workspace={await loadWorkspace()} />;
+  return <TrendScreen section={section} workspace={await loadWorkspace()} aiEnabled={aiConfigured()} />;
 }

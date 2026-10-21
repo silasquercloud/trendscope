@@ -13,17 +13,17 @@ import type { Video } from "@/lib/trendscope/types";
 import { EmptyState } from "./empty-state";
 import { formatCount } from "./performance";
 
-export function exportVideos(videos: Video[], demo: boolean) {
-  const url = URL.createObjectURL(new Blob([videosCSV(videos, demo)], { type: "text/csv;charset=utf-8" }));
+export function exportVideos(videos: Video[]) {
+  const url = URL.createObjectURL(new Blob([videosCSV(videos)], { type: "text/csv;charset=utf-8" }));
   const link = document.createElement("a");
   link.href = url;
-  link.download = `trendscope-${demo ? "demo" : "oficial"}-${new Date().toISOString().slice(0, 10)}.csv`;
+  link.download = `trendscope-oficial-${new Date().toISOString().slice(0, 10)}.csv`;
   document.body.append(link);
   link.click();
   link.remove();
   URL.revokeObjectURL(url);
 }
-export function VideoLibrary({ videos, demo }: { videos: Video[]; demo: boolean }) {
+export function VideoLibrary({ videos }: { videos: Video[] }) {
   const [selected, setSelected] = useState<string[]>([]);
   const comparison = videos.filter((v) => selected.includes(`${v.accountId}/${v.id}`));
   return (
@@ -33,7 +33,7 @@ export function VideoLibrary({ videos, demo }: { videos: Video[]; demo: boolean 
           <CardTitle>Biblioteca de vídeos</CardTitle>
           <CardDescription>Estatísticas acumuladas dos vídeos publicados no período selecionado.</CardDescription>
         </div>
-        <Button variant="outline" disabled={!videos.length} onClick={() => exportVideos(videos, demo)}>
+        <Button variant="outline" disabled={!videos.length} onClick={() => exportVideos(videos)}>
           <Download data-icon="inline-start" />
           Exportar CSV
         </Button>

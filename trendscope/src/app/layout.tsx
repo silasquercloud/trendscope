@@ -27,6 +27,8 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
   return (
     <html
       lang="pt-BR"
+      className="dark"
+      style={{ colorScheme: "dark" }}
       data-theme-mode={theme_mode}
       data-theme-preset={theme_preset}
       data-content-layout={content_layout}
