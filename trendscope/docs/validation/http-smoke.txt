@@ -1,0 +1,17 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> trendscope@2.2.0 test:smoke
+> node src/scripts/smoke.mjs
+
+Assets: 17 JS/CSS files served
+200 /dashboard
+200 /dashboard/contas
+200 /dashboard/videos
+200 /dashboard/analises
+200 /dashboard/monetizacao
+200 /dashboard/tendencias
+200 /dashboard/audios
+200 /dashboard/laboratorio
+200 /dashboard/relatorios
+200 /dashboard/configuracoes
+Redirects, legacy 404s, empty workspace, health, CSRF and unconfigured auth verified.

@@ -1,0 +1,11 @@
+(node:6) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> trendscope@2.2.0 prepare
+> node src/scripts/prepare.mjs
+
+(node:34) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Skipping Git hooks in CI/production.
+
+added 627 packages in 12s

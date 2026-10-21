@@ -15,16 +15,15 @@ export async function getValueFromCookie(key: string): Promise<string | undefine
   return cookieStore.get(key)?.value;
 }
 
-export async function setValueToCookie(
-  key: string,
-  value: string,
-  options: { path?: string; maxAge?: number } = {},
-): Promise<void> {
+export async function setValueToCookie(key: PreferenceKey, value: string): Promise<void> {
+  if (!Object.hasOwn(PREFERENCE_REGISTRY, key) || parsePreference(key, value) !== value) {
+    throw new Error("Preferência inválida");
+  }
+  const persistence = getPreferencePersistence(key);
+  if (persistence !== "client-cookie" && persistence !== "server-cookie")
+    throw new Error("Preferência não persistida em cookie");
   const cookieStore = await cookies();
-  cookieStore.set(key, value, {
-    path: options.path ?? "/",
-    maxAge: options.maxAge ?? 60 * 60 * 24 * 7, // default: 7 days
-  });
+  cookieStore.set(key, value, { path: "/", maxAge: 60 * 60 * 24 * 365, sameSite: "lax" });
 }
 
 export async function getPreference<K extends PreferenceKey>(key: K): Promise<PreferenceValueMap[K]> {

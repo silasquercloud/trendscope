@@ -1,3 +1,2 @@
-npm run generate:presets
-git add src/lib/preferences/theme.ts
+cd trendscope
 npm exec -- lint-staged

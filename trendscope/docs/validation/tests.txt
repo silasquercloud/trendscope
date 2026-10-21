@@ -1,0 +1,23 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> trendscope@2.2.0 test
+> node --import tsx --test tests/*.test.ts
+
+✔ filters apply publication date, platform, account, search together (1.605325ms)
+✔ unknown metrics are never silently treated as zero (0.358641ms)
+✔ CSV quotes values, neutralizes formulas and explicitly labels demo exports (0.620918ms)
+✔ YouTube parsing preserves unavailable and hidden statistics (3.888083ms)
+✔ TikTok normalization rejects invalid payloads and does not fabricate counts (1.491503ms)
+✔ YouTube pagination and batching use fixed official hosts and bearer headers (9.324335ms)
+✔ TikTok API application errors and expired tokens are not successful syncs (1.598575ms)
+✔ TikTok only reports account-wide views as unavailable (2.165661ms)
+✔ auth fails closed without a database and a sufficiently long secret (1.046921ms)
+✔ mutations reject missing, foreign and spoofed origins (1.47634ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 623.319135
